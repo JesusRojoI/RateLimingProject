@@ -1,0 +1,2 @@
+Para ejecutar el test de fuerza bruta debemos usar el siguiente comando:
+node test/brute_force.js
