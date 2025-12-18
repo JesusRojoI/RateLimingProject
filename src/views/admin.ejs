@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .header { display: flex; justify-content: space-between; align-items: center; }
+        .logout { color: red; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Panel de Control (Admin)</h1>
+        <div>
+            <span>Hola, <strong><%= userEmail %></strong></span> | 
+            <a href="/logout" class="logout">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <p>Monitor de usuarios registrados en el sistema.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Fecha de Registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (users && users.length > 0) { %>
+                <% users.forEach(function(u) { %>
+                    <tr>
+                        <td><%= u.id %></td>
+                        <td><%= u.email %></td>
+                        <td>
+                            <% if(u.role === 'admin') { %>
+                                <strong style="color: blue;">ADMIN</strong>
+                            <% } else { %>
+                                user
+                            <% } %>
+                        </td>
+                        <td><%= new Date(u.createdAt).toLocaleString() %></td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4">No hay usuarios registrados.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>

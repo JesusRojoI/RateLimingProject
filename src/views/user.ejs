@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; max-width: 400px; }
+        .logout { color: red; text-decoration: none; display: inline-block; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Bienvenido</h1>
+        <p>Has iniciado sesión exitosamente.</p>
+        <hr>
+        <% if (user) { %>
+            <p><strong>Tu ID:</strong> <%= user.userId %></p>
+            <p><strong>Email:</strong> <%= user.userEmail %></p>
+            <p><strong>Rol:</strong> <span style="background: #eee; padding: 2px 6px; border-radius: 4px;"><%= user.userRole %></span></p>
+        <% } %>
+        
+        <a href="/logout" class="logout">Cerrar Sesión</a>
+    </div>
+</body>
+</html>

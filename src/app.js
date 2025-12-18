@@ -4,12 +4,10 @@ import helmet from "helmet";
 import dotenv from "dotenv";
 import rateLimit from "express-rate-limit";
 import path from "path";
-import { PrismaClient } from "@prisma/client";
 import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
 dotenv.config();
 const app = express();
-const prisma = new PrismaClient();
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 
